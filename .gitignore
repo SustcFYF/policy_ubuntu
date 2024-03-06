@@ -1,0 +1,5 @@
+# dir
+.vscode/
+.vs/
+build/
+out/
