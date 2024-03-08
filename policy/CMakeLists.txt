@@ -1,4 +1,4 @@
-find_package(Torch REQUIRED)
+find_package(Torch REQUIRED PATHS ~/libtorch)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TORCH_CXX_FLAGS}")
 
 add_library(policy SHARED

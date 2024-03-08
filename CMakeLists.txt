@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.12)
 
 project(libtorch_test_ubuntu)
 
-find_package(Torch REQUIRED)
+find_package(Torch REQUIRED PATHS ~/libtorch)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TORCH_CXX_FLAGS}")
 
 # 可执行文件
