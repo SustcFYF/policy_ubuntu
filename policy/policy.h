@@ -1,12 +1,18 @@
-#include "torch/torch.h"
-#include "torch/script.h"
+#ifndef LIBTORCH_POLICY_H_
+#define LIBTORCH_POLICY_H_
+#include <string>
+#include <vector>
 
+namespace policy {
 class Policy {
 public:
     Policy(const std::string& model_path);
-    at::Tensor forward(torch::Tensor& state);
+    auto forward(std::vector<double>& state)->std::vector<double>;
+    auto setMaxTorque(double value=10.0)->void;
+    auto maxTorque()->double;
 
 private:
-    torch::jit::script::Module model;
-    const int MAX_TORQUE = 10;
+    double max_torque_{10.0};
 };
+}
+#endif

@@ -1,15 +1,23 @@
 cmake_minimum_required(VERSION 3.12)
 
 project(libtorch_test_ubuntu)
+set(CMAKE_CXX_STANDARD 17)
+if(UNIX)
+    add_definitions(-DUNIX)
+    find_package(aris REQUIRED PATHS /usr/aris)
+endif(UNIX)
 
-find_package(Torch REQUIRED)
+include_directories(${aris_INCLUDE_DIRS})
+
+find_package(Torch REQUIRED PATHS /home/kaanh/lib/torch/pytorch/torch)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TORCH_CXX_FLAGS}")
-
-# 可执行文件
-add_executable(main "main.cpp" "policy/policy.cpp")
 
 add_subdirectory(policy)
 
-target_link_libraries(main "${TORCH_LIBRARIES}")
+# 可执行文件
+add_executable(main "main.cpp")
 
-set_property(TARGET main PROPERTY CXX_STANDARD 17)
+
+target_link_libraries(main "${TORCH_LIBRARIES}" policy)
+
+target_link_libraries(main ${aris_LIBRARIES} atomic pthread m)
