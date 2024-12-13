@@ -10,11 +10,11 @@ int main() {
     // aris::dynamic::dsp(1, 6, test);
     // aris::server::ControlServer& cs = aris::server::ControlServer::instance();
     // aris::core::fromXmlFile(cs, "test");
-    std::string model_path = "/home/kaanh/GitRepo/policy_ubuntu/model/test725.pt";
+    std::string model_path = "/home/kaanh/GitRepo/policy_ubuntu/model/120321_tip_traced.pt";
     policy::Policy policy(model_path);
 
     // 输入数据: [j0p, j1p, j2p, j0v, j1v, j2v, x, y, q, vx, vy, wz, j1f, j2f]
-    std::vector<double> state = {0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1};
+    std::vector<double> state = {0.1, 0.1, 0.1, 0.1, 0.1, 0.1};
     std::cout << "state: " ;
     for (size_t i = 0; i < state.size(); i++) {
         std::cout << state[i] << "\t";
