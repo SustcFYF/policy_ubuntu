@@ -9,7 +9,7 @@ endif(UNIX)
 
 include_directories(${aris_INCLUDE_DIRS})
 
-find_package(Torch REQUIRED PATHS /home/kaanh/lib/torch/pytorch/torch)
+find_package(Torch REQUIRED PATHS /home/kaanh/libtorch/share/cmake/Torch)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TORCH_CXX_FLAGS}")
 
 add_subdirectory(policy)
